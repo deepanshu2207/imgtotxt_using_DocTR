@@ -4,6 +4,7 @@ import numpy as np
 import streamlit as st
 import torch
 import json
+import base64
 
 from doctr.io import DocumentFile
 from doctr.utils.visualization import visualize_page
@@ -116,13 +117,16 @@ def main(det_archs, reco_archs):
                 print('\n')
 
                 # Display Text
-                st.markdown("\n## **Here is your text:**")
+                st.markdown("\n### **Here is your text:**")
                 st.write(all_text)
 
                 # Display JSON
-                json_string = json.dumps(page_export)
-                st.markdown("\n## **Here are your analysis results in JSON format:**")
-                st.download_button(label="Download JSON", data=json_string, file_name='data.json', mime='application/json')
+                # json_string = json.dumps(page_export)
+                st.markdown("\n### **Here is your document structure in JSON format:**")
+                encoded_data = base64.b64encode(json.dumps(page_export).encode("utf-8")).decode("utf-8")
+                download_link = f"data:application/json;base64,{encoded_data}"
+                st.markdown(f"[Download JSON]( {download_link} )")
+                # st.download_button(label="Download JSON", data=json_string, file_name='data.json', mime='application/json')
                 st.json(page_export, expanded=False)
 
 
