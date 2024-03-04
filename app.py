@@ -131,6 +131,9 @@ def main(det_archs, reco_archs):
 
             st.success('Done!')
             st.balloons()
+    
+    st.markdown("Used Github Actions to automatically build the app on any updates on this [github repo link](https://github.com/deepanshu2207/imgtotext)")
+    st.caption("Made with ❤️ by @deepanshu2207. Credits to 🤗 Spaces for Hosting this.")
 
 if __name__ == "__main__":
     main(DET_ARCHS, RECO_ARCHS)
