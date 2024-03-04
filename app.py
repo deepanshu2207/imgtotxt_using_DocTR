@@ -3,6 +3,7 @@
 import numpy as np
 import streamlit as st
 import torch
+import json
 
 from doctr.io import DocumentFile
 from doctr.utils.visualization import visualize_page
@@ -115,12 +116,13 @@ def main(det_archs, reco_archs):
                 print('\n')
 
                 # Display Text
-                st.markdown("\n#**Here is your text:**")
+                st.markdown("\n## **Here is your text:**")
                 st.write(all_text)
 
                 # Display JSON
-                st.markdown("\n#**Here are your analysis results in JSON format:**")
-                st.download_button(label="Download JSON", data=page_export, file_name='data.json', mime='application/json')
+                json_string = json.dumps(page_export)
+                st.markdown("\n## **Here are your analysis results in JSON format:**")
+                st.download_button(label="Download JSON", data=json_string, file_name='data.json', mime='application/json')
                 st.json(page_export, expanded=False)
 
 
