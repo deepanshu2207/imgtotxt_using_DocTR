@@ -134,35 +134,6 @@ def main(det_archs, reco_archs):
     
 
 if __name__ == "__main__":
+    st.markdown("Used Github Actions to automatically build the app on any updates on this [github repo link](https://github.com/deepanshu2207/imgtotxt_using_DocTR)")
+    st.caption("Made with ❤️ by Deepanshu. Credits to 🤗 Spaces for Hosting this.")
     main(DET_ARCHS, RECO_ARCHS)
-    # st.markdown("Used Github Actions to automatically build the app on any updates on this [github repo link](https://github.com/deepanshu2207/imgtotxt_using_DocTR)")
-    # st.caption("Made with ❤️ by Deepanshu. Credits to 🤗 Spaces for Hosting this.")
-
-            # a:link , a:visited{
-            # color: blue;
-            # background-color: transparent;
-            # text-decoration: underline;
-            # }
-
-            # a:hover,  a:active {
-            # color: red;
-            # background-color: transparent;
-            # text-decoration: underline;
-            # }
-    footer="""<style>
-            .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: white;
-            color: black;
-            text-align: center;
-            }
-            </style>
-            <div class="footer">
-            <p>Made with ❤️ by Deepanshu. Credits to 🤗 Spaces for Hosting this. 
-            Used Github Actions to automatically build the app on any updates on this <a style='display: block; text-align: center;' href="https://github.com/deepanshu2207/imgtotxt_using_DocTR" target="_blank">github repo link</a></p>
-            </div>
-            """
-    st.markdown(footer,unsafe_allow_html=True)
