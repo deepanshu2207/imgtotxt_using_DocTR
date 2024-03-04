@@ -109,17 +109,18 @@ def main(det_archs, reco_archs):
                         for word in line['words']:
                             all_text+=word['value']
                             all_text+=' '
-                    all_text+='\n'
+                        all_text+='\n'    
                 
                 print('all_text', all_text)
                 print('\n')
 
                 # Display Text
-                st.markdown("\nHere is your text:")
+                st.markdown("\n#**Here is your text:**")
                 st.write(all_text)
 
                 # Display JSON
-                st.markdown("\nHere are your analysis results in JSON format:")
+                st.markdown("\n#**Here are your analysis results in JSON format:**")
+                st.download_button(label="Download JSON", data=page_export, file_name='data.json', mime='application/json')
                 st.json(page_export, expanded=False)
 
 
