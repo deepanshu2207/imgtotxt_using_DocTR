@@ -60,22 +60,22 @@ def load_predictor(
     return predictor
 
 
-def forward_image(predictor: OCRPredictor, image: np.ndarray, device: torch.device) -> np.ndarray:
-    """Forward an image through the predictor
+# def forward_image(predictor: OCRPredictor, image: np.ndarray, device: torch.device) -> np.ndarray:
+#     """Forward an image through the predictor
 
-    Args:
-    ----
-        predictor: instance of OCRPredictor
-        image: image to process
-        device: torch.device, the device to process the image on
+#     Args:
+#     ----
+#         predictor: instance of OCRPredictor
+#         image: image to process
+#         device: torch.device, the device to process the image on
 
-    Returns:
-    -------
-        segmentation map
-    """
-    with torch.no_grad():
-        processed_batches = predictor.det_predictor.pre_processor([image])
-        out = predictor.det_predictor.model(processed_batches[0].to(device), return_model_output=True)
-        seg_map = out["out_map"].to("cpu").numpy()
+#     Returns:
+#     -------
+#         segmentation map
+#     """
+#     with torch.no_grad():
+#         processed_batches = predictor.det_predictor.pre_processor([image])
+#         out = predictor.det_predictor.model(processed_batches[0].to(device), return_model_output=True)
+#         seg_map = out["out_map"].to("cpu").numpy()
 
-    return seg_map
+#     return seg_map

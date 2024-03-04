@@ -1,5 +1,5 @@
-import cv2
-import matplotlib.pyplot as plt
+# import cv2
+# import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 import torch
@@ -7,7 +7,7 @@ import torch
 from doctr.io import DocumentFile
 from doctr.utils.visualization import visualize_page
 
-from backend.pytorch import DET_ARCHS, RECO_ARCHS, forward_image, load_predictor
+from backend.pytorch import DET_ARCHS, RECO_ARCHS, load_predictor #forward_image
 
 forward_device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -50,18 +50,18 @@ def main(det_archs, reco_archs):
     det_arch = st.sidebar.selectbox("Text detection model", det_archs)
     reco_arch = st.sidebar.selectbox("Text recognition model", reco_archs)
 
-    # For newline
-    st.sidebar.write("\n")
-    # Only straight pages or possible rotation
-    st.sidebar.title("Parameters")
-    assume_straight_pages = st.sidebar.checkbox("Assume straight pages", value=True)
-    st.sidebar.write("\n")
-    # Straighten pages
-    straighten_pages = st.sidebar.checkbox("Straighten pages", value=False)
-    st.sidebar.write("\n")
-    # Binarization threshold
-    bin_thresh = st.sidebar.slider("Binarization threshold", min_value=0.1, max_value=0.9, value=0.3, step=0.1)
-    st.sidebar.write("\n")
+    # # For newline
+    # st.sidebar.write("\n")
+    # # Only straight pages or possible rotation
+    # st.sidebar.title("Parameters")
+    # assume_straight_pages = st.sidebar.checkbox("Assume straight pages", value=True)
+    # st.sidebar.write("\n")
+    # # Straighten pages
+    # straighten_pages = st.sidebar.checkbox("Straighten pages", value=False)
+    # st.sidebar.write("\n")
+    # # Binarization threshold
+    # bin_thresh = st.sidebar.slider("Binarization threshold", min_value=0.1, max_value=0.9, value=0.3, step=0.1)
+    # st.sidebar.write("\n")
 
     if st.sidebar.button("Analyze page"):
         if uploaded_file is None:
@@ -69,6 +69,9 @@ def main(det_archs, reco_archs):
 
         else:
             with st.spinner("Loading model..."):
+                # Default Values
+                assume_straight_pages, straighten_pages, bin_thresh = True, False, 0.3
+
                 predictor = load_predictor(
                     det_arch, reco_arch, assume_straight_pages, straighten_pages, bin_thresh, forward_device
                 )
@@ -95,6 +98,11 @@ def main(det_archs, reco_archs):
                 if assume_straight_pages or (not assume_straight_pages and straighten_pages):
                     img = out.pages[0].synthesize()
                     cols[2].image(img, clamp=True)
+
+                print('out',out)
+                print('\n')
+                print('page_export',page_export)
+                print('\n')
 
                 # Display JSON
                 st.markdown("\nHere are your analysis results in JSON format:")

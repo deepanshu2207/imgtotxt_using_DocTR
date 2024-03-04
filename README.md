@@ -1,5 +1,5 @@
 ---
-title: docTR
+title: Text Extractor
 emoji: 📑
 colorFrom: purple
 colorTo: pink
