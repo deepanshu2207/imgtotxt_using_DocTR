@@ -135,5 +135,5 @@ def main(det_archs, reco_archs):
 
 if __name__ == "__main__":
     main(DET_ARCHS, RECO_ARCHS)
-    st.markdown("Used Github Actions to automatically build the app on any updates on this [github repo link](https://github.com/deepanshu2207/imgtotext)")
-    st.caption("Made with ❤️ by @deepanshu2207. Credits to 🤗 Spaces for Hosting this.")
+    st.markdown("Used Github Actions to automatically build the app on any updates on this [github repo link](https://github.com/deepanshu2207/imgtotxt_using_DocTR)")
+    st.caption("Made with ❤️ by Deepanshu. Credits to 🤗 Spaces for Hosting this.")
