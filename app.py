@@ -129,6 +129,8 @@ def main(det_archs, reco_archs):
                 # st.download_button(label="Download JSON", data=json_string, file_name='data.json', mime='application/json')
                 st.json(page_export, expanded=False)
 
+            st.success('Done!')
+            st.balloons()
 
 if __name__ == "__main__":
     main(DET_ARCHS, RECO_ARCHS)
