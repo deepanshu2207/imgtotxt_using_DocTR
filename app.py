@@ -28,8 +28,8 @@ def main(det_archs, reco_archs):
     cols = st.columns((1, 1, 1))
     cols[0].subheader("Input page")
     # cols[1].subheader("Segmentation heatmap")
-    cols[2].subheader("OCR output")
-    cols[3].subheader("Page reconstitution")
+    cols[1].subheader("OCR output")
+    cols[2].subheader("Page reconstitution")
 
     # Sidebar
     # File selection
@@ -74,27 +74,27 @@ def main(det_archs, reco_archs):
                 )
 
             with st.spinner("Analyzing..."):
-                # Forward the image to the model
-                seg_map = forward_image(predictor, page, forward_device)
-                seg_map = np.squeeze(seg_map)
-                seg_map = cv2.resize(seg_map, (page.shape[1], page.shape[0]), interpolation=cv2.INTER_LINEAR)
+                # # Forward the image to the model
+                # seg_map = forward_image(predictor, page, forward_device)
+                # seg_map = np.squeeze(seg_map)
+                # seg_map = cv2.resize(seg_map, (page.shape[1], page.shape[0]), interpolation=cv2.INTER_LINEAR)
 
-                # Plot the raw heatmap
-                fig, ax = plt.subplots()
-                ax.imshow(seg_map)
-                ax.axis("off")
-                cols[1].pyplot(fig)
+                # # Plot the raw heatmap
+                # fig, ax = plt.subplots()
+                # ax.imshow(seg_map)
+                # ax.axis("off")
+                # cols[1].pyplot(fig)
 
                 # Plot OCR output
                 out = predictor([page])
                 fig = visualize_page(out.pages[0].export(), out.pages[0].page, interactive=False, add_labels=False)
-                cols[2].pyplot(fig)
+                cols[1].pyplot(fig)
 
                 # Page reconsitution under input page
                 page_export = out.pages[0].export()
                 if assume_straight_pages or (not assume_straight_pages and straighten_pages):
                     img = out.pages[0].synthesize()
-                    cols[3].image(img, clamp=True)
+                    cols[2].image(img, clamp=True)
 
                 # Display JSON
                 st.markdown("\nHere are your analysis results in JSON format:")
