@@ -19,6 +19,9 @@ def main(det_archs, reco_archs):
     # Wide mode
     st.set_page_config(layout="wide")
 
+    st.markdown("Used Github Actions to automatically build the app on any updates on this [github repo link](https://github.com/deepanshu2207/imgtotxt_using_DocTR)")
+    st.caption("Made with ❤️ by Deepanshu. Credits to 🤗 Spaces for Hosting this.")
+    
     # Designing the interface
     st.title("Document Text Extraction")
     # For newline
@@ -134,6 +137,4 @@ def main(det_archs, reco_archs):
     
 
 if __name__ == "__main__":
-    st.markdown("Used Github Actions to automatically build the app on any updates on this [github repo link](https://github.com/deepanshu2207/imgtotxt_using_DocTR)")
-    st.caption("Made with ❤️ by Deepanshu. Credits to 🤗 Spaces for Hosting this.")
     main(DET_ARCHS, RECO_ARCHS)
