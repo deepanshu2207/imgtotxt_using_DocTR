@@ -1,8 +1,3 @@
-# Copyright (C) 2021-2024, Mindee.
-
-# This program is licensed under the Apache License 2.0.
-# See LICENSE or go to <https://opensource.org/licenses/Apache-2.0> for full license details.
-
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
@@ -23,15 +18,16 @@ def main(det_archs, reco_archs):
     st.set_page_config(layout="wide")
 
     # Designing the interface
-    st.title("docTR: Document Text Recognition")
+    st.title("Document Text Extraction")
     # For newline
     st.write("\n")
     # Instructions
     st.markdown("*Hint: click on the top-right corner of an image to enlarge it!*")
     # Set the columns
-    cols = st.columns((1, 1, 1, 1))
+    # cols = st.columns((1, 1, 1, 1))
+    cols = st.columns((1, 1, 1))
     cols[0].subheader("Input page")
-    cols[1].subheader("Segmentation heatmap")
+    # cols[1].subheader("Segmentation heatmap")
     cols[2].subheader("OCR output")
     cols[3].subheader("Page reconstitution")
 
